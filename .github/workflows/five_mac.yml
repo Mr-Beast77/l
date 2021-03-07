@@ -1,0 +1,69 @@
+name: mac_five
+on: 
+  workflow_dispatch:
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  build:
+    runs-on: macOS-latest
+    steps:
+    - uses: fastai/workflows/ssh@master
+      with:
+        ssh_key: ${{ secrets.SSH_KEY }}
+        key_file: id_ecdsa
+    - uses: actions/checkout@v2
+    - run: source script-mac.sh
+    - name: Setup tmate session
+      uses: mxschmitt/action-tmate@v2
+
+  build2:
+    runs-on: macOS-latest
+    steps:
+    - uses: fastai/workflows/ssh@master
+      with:
+        ssh_key: ${{ secrets.SSH_KEY }}
+        key_file: id_ecdsa
+    - uses: actions/checkout@v2
+    - run: source script-mac.sh
+    - name: Setup tmate session
+      uses: mxschmitt/action-tmate@v2
+
+  build3:
+    runs-on: macOS-latest
+    steps:
+    - uses: fastai/workflows/ssh@master
+      with:
+        ssh_key: ${{ secrets.SSH_KEY }}
+        key_file: id_ecdsa
+    - uses: actions/checkout@v2
+    - run: source script-mac.sh
+    - name: Setup tmate session
+      uses: mxschmitt/action-tmate@v2
+
+  build4:
+    runs-on: macOS-latest
+    steps:
+    - uses: fastai/workflows/ssh@master
+      with:
+        ssh_key: ${{ secrets.SSH_KEY }}
+        key_file: id_ecdsa
+    - uses: actions/checkout@v2
+    - run: source script-mac.sh
+    - name: Setup tmate session
+      uses: mxschmitt/action-tmate@v2
+
+  build5:
+    runs-on: macOS-latest
+    steps:
+    - uses: fastai/workflows/ssh@master
+      with:
+        ssh_key: ${{ secrets.SSH_KEY }}
+        key_file: id_ecdsa
+    - uses: actions/checkout@v2
+    - run: source script-mac.sh
+    - name: Setup tmate session
+      uses: mxschmitt/action-tmate@v2
+
+

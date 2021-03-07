@@ -1,0 +1,26 @@
+alias pi='export PATH=/usr/lib/icecc/bin:$PATH'
+alias is='sudo icecc-scheduler -d' 
+alias dis='docker run -it --net=host -d --restart=unless-stopped cbarraco/icecc-scheduler'
+alias did='docker run -it --net=host -d --restart=unless-stopped cbarraco/icecc-daemon'
+vncc() {
+sudo apt -qq update
+sudo apt -qq install xfce4 tightvncserver
+mkdir -p ~/.vnc
+echo '#!/bin/bash
+xrdb $HOME/.Xresources
+startxfce4 &' > ~/.vnc/xstartup
+chmod +x ~/.vnc/xstartup
+vncserver :1 
+} 
+ng(){
+cd ~
+curl -LO https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip -s
+unzip -qq ngrok*
+./ngrok authtoken 1o4mgRgSxIZ4xL7Tbq59iLY3MJi_XZkQeG9u46ZPVRHAjBNC
+} 
+linux(){
+cd ~
+curl -LO https://github.com/torvalds/linux/archive/master.zip -s
+unzip -qq master.zip
+sudo apt -qqy install libelf-dev
+}

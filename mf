@@ -1,0 +1,12 @@
+alias pi='export PATH=/usr/lib/icecc/bin:$PATH'
+alias is='sudo icecc-scheduler -d' 
+alias dis='docker run -it --net=host -d --restart=unless-stopped cbarraco/icecc-scheduler'
+alias did='docker run -it --net=host -d --restart=unless-stopped cbarraco/icecc-daemon'
+ulimit -S -n 20480
+alias aex="repo init --depth=1 -u git://github.com/AospExtended/manifest.git -b 11.x -g default,-device,-mips ; git clone https://github.com/Apon77Lab/android_.repo_local_manifests.git .repo/local_manifests -b aex --depth=1"
+din(){
+brew install docker docker-machine
+docker-machine create --driver virtualbox --virtualbox-boot2docker-url https://github.com/boot2docker/boot2docker/releases/download/v19.03.12/boot2docker.iso --virtualbox-cpu-count "3" --virtualbox-disk-size "300000" --virtualbox-memory "14336" --virtualbox-no-vtx-check default
+eval "$(docker-machine env default)"
+}
+unalias ls

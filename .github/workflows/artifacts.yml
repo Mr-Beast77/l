@@ -1,0 +1,57 @@
+name: artifacts
+on:
+  push:
+    branches: [ master ]
+jobs:
+  job_1:
+    name: upload only 
+    runs-on: ubuntu-20.04
+    steps:
+      - shell: bash
+        run: |
+          swap_file=/tmp/swapfile2
+          swap_file_size=10G
+          fallocate -l $swap_file_size $swap_file
+          com (){
+          tar --use-compress-program="pigz -k -1" -cf $1.tar.gz $1
+          }
+          cd /tmp
+          com swapfile2
+      - name: Upload math result for job 1
+        uses: actions/upload-artifact@v2
+        with:
+          name: test
+          path: /tmp/swapfile2.tar.gz
+
+  job_2:
+    name: both download and upload
+    needs: job_1
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Download math result for job 1
+        uses: actions/download-artifact@v2
+        with:
+          name: test
+      - shell: bash
+        run: |
+          echo 2nd job >> test.txt
+          ls -lah /tmp
+      - name: Upload math result for job 2
+        uses: actions/upload-artifact@v2
+        with:
+          name: test
+          path: test.txt
+
+  job_3:
+    name: download only
+    needs: job_2
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Download math result for job 2
+        uses: actions/download-artifact@v2
+        with:
+          name: test
+      - name: Print the final result
+        shell: bash
+        run: |
+          echo bye

@@ -1,0 +1,67 @@
+name: dist
+on: 
+  workflow_dispatch:
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+    steps:
+    - uses: fastai/workflows/ssh@master
+      with:
+        ssh_key: ${{ secrets.SSH_KEY }}
+        key_file: id_ecdsa
+    - uses: actions/checkout@v2
+    - run: source script-linux.sh
+    - name: Setup tmate session
+      uses: mxschmitt/action-tmate@master
+
+  build_2:
+    runs-on: ubuntu-20.04
+    steps:
+    - uses: fastai/workflows/ssh@master
+      with:
+        ssh_key: ${{ secrets.SSH_KEY }}
+        key_file: id_ecdsa
+    - uses: actions/checkout@v2
+    - run: source script-linux.sh
+    - name: Setup tmate session
+      uses: mxschmitt/action-tmate@master
+
+  build_3:
+    runs-on: ubuntu-20.04
+    steps:
+    - uses: fastai/workflows/ssh@master
+      with:
+        ssh_key: ${{ secrets.SSH_KEY }}
+        key_file: id_ecdsa
+    - uses: actions/checkout@v2
+    - run: source script-linux.sh
+    - name: Setup tmate session
+      uses: mxschmitt/action-tmate@master
+
+  build_4:
+    runs-on: ubuntu-20.04
+    steps:
+    - uses: fastai/workflows/ssh@master
+      with:
+        ssh_key: ${{ secrets.SSH_KEY }}
+        key_file: id_ecdsa
+    - uses: actions/checkout@v2
+    - run: source script-linux.sh
+    - name: Setup tmate session
+      uses: mxschmitt/action-tmate@master
+
+  build_5:
+    runs-on: ubuntu-20.04
+    steps:
+    - uses: fastai/workflows/ssh@master
+      with:
+        ssh_key: ${{ secrets.SSH_KEY }}
+        key_file: id_ecdsa
+    - uses: actions/checkout@v2
+    - run: source script-linux.sh
+    - name: Setup tmate session
+      uses: mxschmitt/action-tmate@master
